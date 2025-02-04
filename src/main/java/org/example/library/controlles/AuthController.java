@@ -7,6 +7,7 @@ import org.example.library.Exceptions.Auth.UserNameIsTakenException;
 import org.example.library.auth.AuthService;
 import org.example.library.auth.UserDto;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -27,7 +28,7 @@ public class AuthController {
         }
     }
 
-    @GetMapping("login")
+    @GetMapping("/login")
     public ResponseEntity<?> login(){
         return ResponseEntity.ok().build();
     }
