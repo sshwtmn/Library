@@ -21,11 +21,13 @@ public class AuthService implements UserDetailsService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
+
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<User> optional = userRepository.findByUsername(username);
         return new MyUserDetails(optional.orElseThrow(() -> new UsernameNotFoundException(username)));
-    }
+    } 
 
     public void register(UserDto userDto) {
         User user = new User();

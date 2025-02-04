@@ -1,5 +1,4 @@
 package org.example.library.auth;
-
 import lombok.AllArgsConstructor;
 import org.example.library.models.User;
 import org.springframework.security.core.GrantedAuthority;
@@ -17,7 +16,7 @@ public class MyUserDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        String role = user.getRoles();
+        String role = user.getRole();
         List<GrantedAuthority> authorities = new ArrayList<>();
         String[] rolesStrArray = role.split(",");
         for (String roleStr : rolesStrArray) {
@@ -34,5 +33,25 @@ public class MyUserDetails implements UserDetails {
     @Override
     public String getUsername() {
         return user.getUsername();
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }
